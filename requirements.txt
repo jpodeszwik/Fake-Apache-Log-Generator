@@ -1,0 +1,8 @@
+argparse==1.2.1
+fake-factory==0.6.0
+ipaddress==1.0.16
+numpy==1.11.1
+python-dateutil==2.5.3
+pytz==2016.6.1
+six==1.10.0
+wsgiref==0.1.2
