@@ -41,6 +41,7 @@ parser.add_argument("--output", "-o", dest='output_type', help="Write to a Log f
 parser.add_argument("--num", "-n", dest='num_lines', help="Number of lines to generate (0 for infinite)", type=int, default=1)
 parser.add_argument("--prefix", "-p", dest='file_prefix', help="Prefix the output file name", type=str)
 parser.add_argument("--timedelta", type=int, default=0)
+parser.add_argument("--bad", type=bool, default=False)
 
 args = parser.parse_args()
 
@@ -92,7 +93,11 @@ while (flag):
 	byt = int(random.gauss(5000,50))
 	referer = faker.uri()
 	useragent = numpy.random.choice(ualist,p=[0.5,0.3,0.1,0.05,0.05] )()
-	f.write('%s|-|-|%s|%s %s HTTP/1.0|%s|%s|%s|%s\n' % (ip,dt,vrb,uri,resp,byt,referer,useragent))
+	
+	if args.bad:
+		f.write('%s|-|-|%s|%s %s HTTP/1.0|%s|%s\n' % (ip,dt,vrb,uri,resp,byt))
+	else:
+		f.write('%s|-|-|%s|%s %s HTTP/1.0|%s|%s|%s|%s\n' % (ip,dt,vrb,uri,resp,byt,referer,useragent))
 
 	log_lines = log_lines - 1
 	flag = False if log_lines == 0 else True
