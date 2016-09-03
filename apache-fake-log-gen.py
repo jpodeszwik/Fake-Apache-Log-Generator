@@ -40,6 +40,7 @@ parser = argparse.ArgumentParser(__file__, description="Fake Apache Log Generato
 parser.add_argument("--output", "-o", dest='output_type', help="Write to a Log file, a gzip file or to STDOUT", choices=['LOG','GZ','CONSOLE'] )
 parser.add_argument("--num", "-n", dest='num_lines', help="Number of lines to generate (0 for infinite)", type=int, default=1)
 parser.add_argument("--prefix", "-p", dest='file_prefix', help="Prefix the output file name", type=str)
+parser.add_argument("--timedelta", type=int, default=0)
 
 args = parser.parse_args()
 
@@ -75,7 +76,7 @@ ualist = [faker.firefox, faker.chrome, faker.safari, faker.internet_explorer, fa
 
 flag = True
 while (flag):
-	increment = datetime.timedelta(seconds=random.randint(30,300))
+	increment = datetime.timedelta(days=args.timedelta)
 	otime += increment
 
 	ip = faker.ipv4()
