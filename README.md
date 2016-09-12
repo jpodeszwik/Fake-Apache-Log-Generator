@@ -7,7 +7,7 @@
 * ```pip install -r requirements.txt```
 
 ## Usage
-* ```./run.sh <hostname> <port>
+* ```./run.sh <hostname> <port>```
 
 ## License
 This script is released under the [Apache version 2](LICENSE) license.
